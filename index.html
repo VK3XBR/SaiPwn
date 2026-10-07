@@ -1,245 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Aarush VK3XBR - Ham Radio &amp; Builder</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VK3XBR | Sai Aarush</title>
   <style>
+    :root {
+      --paper: #efe7d0;
+      --paper-2: #ddd1ad;
+      --ink: #191919;
+      --ink-soft: #3b3b3b;
+      --green: #1f4d2f;
+      --green-dark: #163521;
+      --red: #6b1d1d;
+      --gold: #b7871d;
+      --line: #312b28;
+      --panel: #d8cab0;
+      --panel-2: #c9b996;
+    }
+
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
-    /* Tiled background: cat in a tie - small tiles */
-    body {
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-size: 12px;
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #b8b0a1;
+      color: var(--ink);
+      font-family: "Courier New", Courier, monospace;
       line-height: 1.5;
-      color: #1c1917;
-      background-color: #e8e4dc;
+    }
+
+    body {
       background-image: url('bg-cat.png');
       background-repeat: repeat;
-      background-size: 100px auto;
+      background-size: 120px auto;
       background-attachment: fixed;
       min-height: 100vh;
     }
 
-    .page-wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
+    .page {
+      max-width: 980px;
+      margin: 22px auto;
+      padding: 10px;
+      background: #d3c49d;
+      border: 4px solid var(--line);
+      box-shadow: 8px 8px 0 #00000080;
     }
 
-    /* Classic table-based layout feel with div structure */
-    .main-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-
-    .content-cell {
-      background: #fefce8;
-      border: 3px solid #84cc16;
-      padding: 20px;
-      box-shadow: 5px 5px 0 rgba(132, 204, 22, 0.35);
-    }
-
-    /* Header styling */
-    .header {
-      text-align: center;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: linear-gradient(180deg, #65a30d 0%, #4d7c0f 50%, #65a30d 100%);
-      border: 3px solid #4d7c0f;
-      color: #fff;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-
-    .header h1 {
-      font-size: 22px;
+    .topbar {
+      background: var(--green-dark);
+      color: #f2f0e8;
+      padding: 8px 14px;
+      border: 3px solid var(--line);
+      text-transform: uppercase;
+      letter-spacing: 2px;
       font-weight: bold;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
-    }
-
-    .header .callsign {
-      font-size: 18px;
-      opacity: 0.95;
-    }
-
-    /* Navigation links */
-    .nav-links {
-      margin: 15px 0;
-      padding: 10px 0;
-      border-top: 1px dashed #999;
-      border-bottom: 1px dashed #999;
-    }
-
-    .nav-links a {
-      color: #15803d;
-      text-decoration: underline;
-      margin-right: 15px;
-      font-weight: bold;
-    }
-
-    .nav-links a:hover {
-      color: #ca8a04;
-    }
-
-    /* Section styling */
-    h2 {
-      font-size: 14px;
-      color: #15803d;
-      margin: 20px 0 10px;
-      padding-bottom: 5px;
-      border-bottom: 2px dashed #84cc16;
-    }
-
-    h2:first-child {
-      margin-top: 0;
-    }
-
-    h3 {
-      font-size: 12px;
-      color: #15803d;
-      margin: 15px 0 8px;
-    }
-
-    p {
-      margin-bottom: 10px;
-    }
-
-    ul {
-      margin: 0 0 10px 20px;
-    }
-
-    a {
-      color: #15803d;
-    }
-
-    a:hover {
-      color: #ca8a04;
-    }
-
-    /* Logbook iframe container */
-    .logbook-section {
-      margin: 20px 0;
-    }
-
-    .logbook-section iframe {
-      display: block;
-      border: 3px solid #84cc16;
-      background: #fff;
-    }
-
-    /* Alerts badge */
-    .alerts-section {
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    .alerts-section img {
-      border: 3px solid #84cc16;
-      max-width: 100%;
-    }
-
-    .alerts-label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      font-size: 12px;
-      color: #15803d;
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 30px;
-      padding-top: 15px;
-      border-top: 2px dashed #84cc16;
       font-size: 11px;
-      color: #15803d;
+    }
+
+    .title-box {
+      background: #f5f0df;
+      border: 4px solid var(--line);
+      border-top: none;
+      padding: 18px 20px 12px;
+    }
+
+    .title-box h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-dark);
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .nav {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--paper-2);
+      border: 3px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .nav a {
+      color: var(--green-dark);
+      text-decoration: underline;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 3px solid var(--line);
+      padding: 12px 14px;
+    }
+
+    .panel h2 {
+      margin: 0 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--green);
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green-dark);
+    }
+
+    .panel p,
+    .panel li {
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .meta {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      font-weight: bold;
+    }
+
+    .projects {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .projects li {
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .projects li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .projects strong {
+      display: block;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .projects a,
+    .panel a,
+    .footer a {
+      color: var(--green-dark);
+      text-decoration: underline;
+    }
+
+    .badge {
+      display: block;
+      margin: 8px 0 10px;
+      width: 100%;
+      max-width: 100%;
+      border: 3px solid var(--line);
+      background: white;
+    }
+
+    .logbook {
+      width: 100%;
+      min-height: 500px;
+      border: 3px solid var(--line);
+      background: #fff;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .station-box {
+      background: #e7dec0;
+      border: 3px solid var(--line);
+      padding: 8px 10px;
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 14px;
+      background: #f3eed9;
+      border: 3px solid var(--line);
+      padding: 12px;
       text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        gap: 6px 10px;
+      }
+
+      .title-box {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <table class="main-table">
-      <tr>
-        <td class="content-cell">
-          <div class="header">
-            <h1>Welcome to Sai Aarush's Homepage!</h1>
-            <div class="callsign">VK3XBR &bull; Point Cook, Victoria, Australia</div>
-          </div>
+  <div class="page">
+    <div class="topbar">VK3XBR // Sai Aarush // Point Cook, Victoria Australia</div>
 
-          <div class="nav-links">
-            <a href="mailto:sai.aarush@icloud.com">Email Me</a>
-            <a href="https://github.com/catmov">GitHub</a>
-            <a href="https://github.com/SaiPwn/HAM-TTS">HAM-TTS</a>
-            <a href="https://www.qrz.com/db/VK3XBR">QRZ Profile</a>
-            <a href="https://sai-aarush.com">Main Site</a>
-          </div>
+    <div class="title-box">
+      <h1>VK3XBR</h1>
+      <div class="subtitle">Sai Aarush &nbsp;|&nbsp; Ham Radio &amp; Builder &nbsp;|&nbsp; Radio Experiments</div>
 
-          <h2>About Me</h2>
-          <p>Hi! I'm Sai Aarush. I'm 14, studying and building small things. I like ham radio, software, and random experiments. Hope your day is bright!</p>
+      <div class="nav">
+        <a href="mailto:sai.aarush@icloud.com">Email</a>
+        <a href="https://github.com/VK3XBR">GitHub</a>
+        <a href="https://sai-aarush.com">Main Site</a>
+        <a href="https://www.qrz.com/db/VK3XBR">QRZ</a>
+        <a href="https://github.com/VK3XBR/HAM-TTS">HAM-TTS</a>
+        <a href="https://github.com/VK3XBR/AustralianFrequencyDirectory">Aus Frequency Directory</a>
+      </div>
+    </div>
 
-          <h2>Projects</h2>
-          <h3>HAM-TTS</h3>
-          <p>Python tiny tool for phonetics + morse practice. Focused on clarity and timing. <a href="https://github.com/SaiPwn/HAM-TTS">View on GitHub</a></p>
+    <div class="grid">
+      <div class="panel">
+        <h2>About</h2>
+        <p>Hi! I'm Sai Aarush, callsign VK3XBR. I like building things, experimenting with radio, learning on the air, and writing tools that make the hobby more fun.</p>
+        <p>I'm mainly focused on ham radio practice, radio experiments, home automation, and lightweight software projects. My work mixes practical radio, tinkering, and coding.</p>
+        <div class="meta">Age: 14 &nbsp;|&nbsp; Location: Victoria, Australia &nbsp;|&nbsp; Callsign: VK3XBR</div>
+      </div>
 
-          <h3>UwU-Linux (WIP)</h3>
-          <p>A playful, minimal Linux setup I'm experimenting with. Link coming later.</p>
+      <div class="panel">
+        <h2>Station</h2>
+        <ul>
+          <li>HF listening and experiments</li>
+          <li>UHF local comms and field work</li>
+          <li>Antennas + propagation learning</li>
+          <li>Logging, practice, and simple DX work</li>
+          <li>Tools: NanoVNA, handhelds, DIY antennas</li>
+        </ul>
+      </div>
+    </div>
 
-          <h2>Radio Practice</h2>
-          <p>Listening, logging, and antenna experiments. Learning by doing.</p>
-          <ul>
-            <li>Tools: NanoVNA, handhelds, and DIY dipoles</li>
-            <li>Favourite bands: HF for distance, UHF for local chatter</li>
-            <li>Building small antennas, learning propagation</li>
-          </ul>
+    <div class="grid" style="margin-top: 14px;">
+      <div class="panel">
+        <h2>Projects</h2>
+        <ul class="projects">
+          <li>
+            <strong>HAM-TTS</strong>
+            Python tool for phonetics and Morse practice. Built for clarity, rhythm, and learning the sound of calls and signals.
+            <br /><a href="https://github.com/VK3XBR/HAM-TTS">View on GitHub</a>
+          </li>
 
-          <h2>My Logbook</h2>
-          <div class="logbook-section">
-            <iframe
-              align="top"
-              frameborder="0"
-              height="500"
-              scrolling="yes"
-              src="https://logbook.qrz.com/lbstat/VK3XBR/"
-              width="100%"
-              style="max-width: 640px; min-height: 500px;">
-            </iframe>
-          </div>
+          <li>
+            <strong>Australian Frequency Directory</strong>
+            A practical reference project for exploring Australian radio frequencies and related info.
+            <br /><a href="https://github.com/VK3XBR/AustralianFrequencyDirectory">Open repository</a>
+          </li>
 
-          <h2>My Alerts</h2>
-          <div class="alerts-section">
-            <span class="alerts-label">Ham Alert Status</span>
-            <img
-              src="https://hamalert.org/myspot?c=VK3XBR&h=bde2104f0958968b&dark=1"
-              srcset="https://hamalert.org/myspot?c=VK3XBR&h=bde2104f0958968b&dark=1&hr=1 2x"
-              alt="Ham Alert status for VK3XBR"
-              width="640"
-            />
-          </div>
+          <li>
+            <strong>ClassicQSL</strong>
+            A classic-style QSL-focused project with a retro ham-radio feel.
+            <br /><a href="https://github.com/VK3XBR/ClassicQSL">View repository</a>
+          </li>
 
-          <h2>contact info</h2>
-          <p>Always happy to chat about code, radio, or anything tech.</p>
-          <p>
-            <a href="mailto:sai.aarush@icloud.com">Send Email</a> &bull;
-            <a href="https://github.com/SaiPwn">GitHub</a> &bull;
-            <a href="https://github.com/SaiPwn/HAM-TTS">HAM-TTS</a> &bull;
-            <a href="https://sai-aarush.com">Main Site</a>
-          </p>
+          <li>
+            <strong>DotDash</strong>
+            Morse and timing-related experimental project for signalling practice.
+            <br /><a href="https://github.com/VK3XBR/DotDash">View repository</a>
+          </li>
 
-          <div class="footer">
-            Sai Aarush VK3XBR &bull; Last updated Feb 2025 &bull; Best viewed in any browser
-          </div>
-        </td>
-      </tr>
-    </table>
+          <li>
+            <strong>Home Assistant</strong>
+            Home automation experiments and related tinkering with practical electronics and software.
+            <br /><a href="https://github.com/VK3XBR/Home-Assistant">View repository</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Quick Links</h2>
+        <p><a href="https://github.com/VK3XBR">GitHub Profile</a></p>
+        <p><a href="https://www.qrz.com/db/VK3XBR">QRZ DB Profile</a></p>
+        <p><a href="https://sai-aarush.com">Personal Website</a></p>
+        <p><a href="mailto:sai.aarush@icloud.com">Email Contact</a></p>
+        <p><a href="https://github.com/VK3XBR/HAM-TTS">HAM-TTS Repo</a></p>
+        <p><a href="https://github.com/VK3XBR/AustralianFrequencyDirectory">Australian Frequency Directory</a></p>
+
+        <div class="station-box">
+          Band focus: HF + UHF + experiments<br />
+          Practice: logging, learning, testing, building
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top: 14px;">
+      <h2>My Logbook</h2>
+      <iframe
+        class="logbook"
+        src="https://logbook.qrz.com/lbstat/VK3XBR/"
+        title="VK3XBR QRZ Logbook"
+        scrolling="yes"
+        frameborder="0">
+      </iframe>
+    </div>
+
+    <div class="panel" style="margin-top: 14px;">
+      <h2>Ham Alert Status</h2>
+      <img
+        class="badge"
+        src="https://hamalert.org/myspot?c=VK3XBR&h=bde2104f0958968b&dark=1"
+        srcset="https://hamalert.org/myspot?c=VK3XBR&h=bde2104f0958968b&dark=1&hr=1 2x"
+        alt="Ham Alert status for VK3XBR"
+      />
+    </div>
+
+    <div class="footer">
+      Sai Aarush VK3XBR &nbsp;|&nbsp; Point Cook, Victoria &nbsp;|&nbsp; Last updated Oct 2026 &nbsp;|&nbsp; <a href="mailto:sai.aarush@icloud.com">contact</a>
+    </div>
   </div>
 </body>
 </html>
